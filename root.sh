@@ -3,7 +3,7 @@
 sudo apt update
 sudo apt upgrade
 
-sudo apt install alsa-utils cloc compton coreutils feh git i3 lm-sensors man mpv mupdf ncurses neofetch network-manager nmap picom pulseaudio python3 python3-pip rxvt-unicode sox tmux unzip vim xserver-xorg-core xinit x11-xserver-utils zip
+sudo apt install -y alsa-utils cloc compton coreutils feh git i3 lm-sensors man-db mpv mupdf ncurses neofetch network-manager nmap picom pulseaudio python3 python3-pip rxvt-unicode sox tmux unzip vim xserver-xorg-core xinit x11-xserver-utils zip
 
 sudo apt install apt-transport-https curl
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
