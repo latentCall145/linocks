@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/tgpu/.vim'
+let g:netrw_dirhist_9='/home/tgpu/.config'
+let g:netrw_dirhist_8='/home/tgpu/.config/mpv'
+let g:netrw_dirhist_7='/usr/share/X11/xorg.conf.d'
+let g:netrw_dirhist_6='/etc/modprobe.d'
+let g:netrw_dirhist_5='/home/tgpu/Jun/tj_ai/csp/nqueens'
+let g:netrw_dirhist_4='/home/tgpu/Jun/tj_ai/adv/othello/Othello Resources/sweep_procs/tbrc_mc'
+let g:netrw_dirhist_3='/home/tgpu/AI/adv/ttt'
+let g:netrw_dirhist_2='/home/tgpu/heavySR/experiment_logs/gpu'
+let g:netrw_dirhist_1='/home/tgpu/heavySR/experiment_logs'

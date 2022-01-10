@@ -1,0 +1,2 @@
+FILES=$*
+mv $FILES ~/.trash

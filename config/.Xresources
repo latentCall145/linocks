@@ -1,0 +1,54 @@
+URxvt*background: #1b1b1b
+URxvt*foreground: White
+URxvt*geometry: 80x30
+URxvt*scrollBar: false
+
+URxvt.font: 9x15
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #393d44 
+*.color8:       #252628
+
+! red
+*.color1:       #b83838
+*.color9:       #a62020
+
+! green
+*.color2:       #64bf40
+*.color10:      #63d569
+
+! yellow
+*.color3:       #d1dc37
+*.color11:      #dff074
+
+! blue
+*.color4:       #457398
+*.color12:      #69baff
+
+! magenta
+*.color5:       #813e97
+*.color13:      #bb86cb
+
+! cyan
+*.color6:       #3b9e91
+*.color14:      #13ebce
+
+! white
+*.color7:       #e4e4e4
+*.color15:      #bdbdbd
+
+
+! -- Fonts -- !
+URxvt.font:xft:Monospace:pixelsize=15
