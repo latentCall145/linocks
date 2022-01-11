@@ -134,6 +134,7 @@ alias du="du -h"
 
 export PATH="/usr/share/vim":$PATH
 export PATH="/usr/bin":$PATH
+export PATH="/usr/local/bin":$PATH
 export PATH="/sbin":$PATH
 export PATH="/usr/local/bin":$PATH
 export PATH="~/.local/bin":$PATH
