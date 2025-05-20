@@ -1,3 +1,5 @@
+shopt -s autocd # cd just by typing directory name
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -116,29 +118,76 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias python3=/usr/bin/python3
-alias py=/usr/bin/python3
-alias pip3="/usr/bin/python3 -m pip"
-alias pip="/usr/bin/python3 -m pip"
-alias yt="~/Scripts/yt.sh $1"
-alias ythr="~/Scripts/ythr.sh $1"
-alias ythd="~/Scripts/ythd.sh $1"
-alias print="~/Scripts/autoPrint.sh $(pwd) $1"
-alias venv='~/Scripts/venvAct.sh' $1
+xset r rate 250 45; # speed up ubuntu keyboard repeat keys: nice
+#export PATH="/usr/cuda/bin" #:$PATH
+export PATH="~/.local/bin" #:$PATH
+export PATH="/snap/bin":$PATH
+export PATH="/sbin":$PATH
+export PATH="/usr/local/cuda/bin":$PATH
+export PATH="/usr/local/bin":$PATH
+export PATH="/usr/local":$PATH
+export PATH="/usr/bin":$PATH
+export PATH="/usr/share/vim":$PATH
+#export LD_LIBRARY_PATH="/home/trtx/.local/miniforge3/lib":$LD_LIBRARY_PATH # if a program needs this, but enabling this everywhere messes up terminal and vim
+export LD_LIBRARY_PATH="/usr/local/cuda/extras/CUPTI/lib64":$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64":$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="/usr/local/lib":$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="/usr/lib":$LD_LIBRARY_PATH
+#export CUDA_HOME="/usr/local/cuda"
+#export CUDA_VISIBLE_DEVICES=0
+export EDITOR=vim
+export NNN_PLUG='c:fzcd;o:fzopen;p:preview-tui;d:diffs;v:imgview'
+
+#alias python3=~/.local/miniconda3/bin/python3
+#alias py=~/.local/miniconda3/bin/python3
+alias py=python3
+alias pip=pip3
+alias yt="~/.scripts/yt.sh $1"
+alias ythr="~/.scripts/ythr.sh $1"
+alias dlVid="~/.scripts/dlVid.sh $1"
 alias vic='vim ~/.config/i3/config'
 alias vb='vim ~/.bashrc; source ~/.bashrc'
-alias vip='vim -p'
-alias trash="~/Scripts/trash.sh $*"
-alias mon="~/Scripts/monitor.sh"
+alias vim='vim -p'
+alias trash="mv -t ~/.trash"
 alias du="du -h"
 
-export PATH="/usr/share/vim":$PATH
-export PATH="/usr/bin":$PATH
-export PATH="/usr/local/bin":$PATH
-export PATH="/sbin":$PATH
-export PATH="/usr/local/bin":$PATH
-export PATH="~/.local/bin":$PATH
-export PATH="/usr/local/cuda-11.5/bin":$PATH
-export LD_LIBRARY_PATH="/usr/local/cuda-11.5/lib64":$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH="/usr/local/cuda-11.5/extras/CUPTI/lib64":$LD_LIBRARY_PATH
-export CUDA_VISIBLE_DEVICES=0
+fcdd() {
+  cd "$(find ${1:-.} -type d | fzf)" # ${1} = 1st arg, :-~ = use "~" if no arg specified
+}
+fcd() {
+  selected_file=$(find ${1:-.} | fzf)
+  cd $(dirname $selected_file$)
+}
+
+mcd() { # mamba cd
+  cd ~/.local/miniforge3/envs/${1:-main}/lib/python3.1/site-packages
+}
+
+open() {
+  selected_file=$(find ${1:-.} | fzf)
+  nohup xdg-open "$selected_file" > /tmp/nohup.out & disown
+}
+
+cpuclocks() {
+  watch -n0.2 "grep MHz /proc/cpuinfo | awk '{print \$4}' | sort -nr"
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/trtx/.local/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/trtx/.local/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/trtx/.local/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/trtx/.local/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/trtx/.local/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/trtx/.local/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+. "$HOME/.cargo/env"
